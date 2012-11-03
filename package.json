@@ -1,0 +1,18 @@
+{
+  "author": "Joost de Vries <joost@closealert.com>",
+  "name": "async-lru-cache",
+  "description": "Another async version of LRU-cache where the load occurs in the original function.",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/closealert/async-lru-cache.git"
+  },
+  "dependencies": {
+    "lru-cache": ""
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
