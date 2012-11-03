@@ -26,21 +26,13 @@ module.exports = function AsyncLRUCache(items) {
 	/**
 	 * Lookup an item and attach a callback if the item is not found
 	 *
-	 * @param mixed Cache key
+	 * @param string Cache key
 	 * @param function Callback function which is called after set(key) is called.
 	 * @return bool Whether the value is found
 	 */
-	AsyncLRUCache.prototype.get = function(_key,cb) {
+	AsyncLRUCache.prototype.get = function(key,cb) {
 
-		var key={};
-
-		if((typeof _key == 'object') || (typeof _key == 'array')) {
-			extend(key,_key);
- 			key = exports.hash(key);
-		}
-		else {
-			key = '' + _key;
-		}
+		key = new String(key);
 
 		var val = this.cache.get(key);
 
@@ -66,11 +58,20 @@ module.exports = function AsyncLRUCache(items) {
 		}
 	}
 
+	/**
+	 * Set a cache value and If any callbacks were attached, execute them
+	 *
+	 * @param string Cache key
+	 * @param mixed Value to be cached
+	 */
 	AsyncLRUCache.prototype.set = function(key,_val) {
 
-		var val = {},
-			cval = this.cache.get(key);
+		key = new String(key);
 
+		var val = {},
+			currentVal = this.cache.get(key);
+
+		// Copy the input value
 		switch(typeof _val){
 			case 'object':
 				val = Object.create(_val);
@@ -88,10 +89,10 @@ module.exports = function AsyncLRUCache(items) {
 
 		this.cache.set(key,val);
 
-		if(cval) {
-			if((typeof(cval) == 'object') && ('asc__cb' in cval)) {
-				for(i=0;i<cval.asc__cb.length; i++) {
-					cval.asc__cb[i](val);
+		if(currentVal) {
+			if((typeof(currentVal) == 'object') && ('asc__cb' in currentVal)) {
+				for(i=0;i<currentVal.asc__cb.length; i++) {
+					currentVal.asc__cb[i](val);
 				}
 			}
 		}
