@@ -1,11 +1,12 @@
-async-lru-cache
-===============
+##async-lru-cache##
 
 AsyncLRUCache is an async cache that makes it a bit easier to use caching in nodejs. It works by taking a callback argument and queueing these callbacks while your function is performing the IO to get the value.
 
 Callbacks can take any number of aruments and with `setContext` you can also specify the context that has to be applied to the callback (as second argument)
 
 For any details as to how it works, look into lib/cache.js or example.js (also shown below).
+
+### examples ###
 
 ```javascript
 var Cache		= require('./lib/cache.js'),
@@ -185,3 +186,15 @@ getStatusAndSize('nnnnnpmjs.org','/about',function(err,status,size) {
 
 },5000);
 ```
+
+### License ###
+
+(MIT License)
+
+Copyright (C) 2012 CloseAlert B.V.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
