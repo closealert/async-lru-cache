@@ -3,6 +3,7 @@
   "name": "async-lru-cache",
   "description": "Another async version of LRU-cache where the load occurs in the original function.",
   "version": "0.2.1",
+  "main": "lib/lru-cache.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/closealert/async-lru-cache.git"
